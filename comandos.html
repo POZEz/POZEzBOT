@@ -90,6 +90,46 @@
             font-size: 2.5rem;
         }
 
+        .category {
+            margin-bottom: 2rem;
+        }
+
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .category-header:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .category-header i {
+            transition: transform 0.3s;
+        }
+
+        .category-content {
+            display: none;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin-top: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .category-content.show {
+            display: block;
+        }
+
+        .highlighted-commands {
+            margin-bottom: 2rem;
+        }
+
         @media (max-width: 768px) {
             .command-grid {
                 grid-template-columns: 1fr;
@@ -106,83 +146,111 @@
             <a href="https://link.mercadopago.com.br/pozezbot">Doação</a>
         </div>
     </nav>
-
     <div class="commands-container">
         <h1>Comandos do POZEz BOT</h1>
-        <div class="command-grid">
-            <div class="command-card">
-                <div class="command-name">/addemoji</div>
-                <p>Adiciona um novo emoji usando uma imagem (URL ou upload)</p>
+
+        <!-- Comandos destacados -->
+        <div class="highlighted-commands">
+            <div class="command-grid">
+                <div class="command-card">
+                    <div class="command-name">/ping</div>
+                    <p>Mostra a latência do bot e status da API</p>
+                </div>
+                <div class="command-card">
+                    <div class="command-name">/help</div>
+                    <p>Mostra todos os comandos disponíveis</p>
+                </div>
             </div>
-            <div class="command-card">
-                <div class="command-name">/ban</div>
-                <p>Banir permanentemente um membro do servidor</p>
+        </div>
+
+        <!-- Categoria Administração -->
+        <div class="category">
+            <div class="category-header" onclick="toggleCategory('admin')">
+                <span>Administração</span>
+                <i class="fas fa-chevron-down"></i>
             </div>
-            <div class="command-card">
-                <div class="command-name">/biden</div>
-                <p>Gera um meme personalizado com o Joe Biden</p>
+            <div class="category-content" id="admin">
+                <div class="command-grid">
+                    <div class="command-card">
+                        <div class="command-name">/ban</div>
+                        <p>Banir permanentemente um membro do servidor</p>
+                    </div>
+                    <div class="command-card">
+                        <div class="command-name">/clear</div>
+                        <p>Limpa mensagens (1-100) no canal atual</p>
+                    </div>
+                    <div class="command-card">
+                        <div class="command-name">/trancar</div>
+                        <p>Tranca o canal atual para todos os membros</p>
+                    </div>
+                    <div class="command-card">
+                        <div class="command-name">/destrancar</div>
+                        <p>Destrava um canal trancado</p>
+                    </div>
+                </div>
             </div>
-            <div class="command-card">
-                <div class="command-name">/clear</div>
-                <p>Limpa mensagens (1-100) no canal atual</p>
+        </div>
+
+        <!-- Categoria Integração -->
+        <div class="category">
+            <div class="category-header" onclick="toggleCategory('integracao')">
+                <span>Integração</span>
+                <i class="fas fa-chevron-down"></i>
             </div>
-            <div class="command-card">
-                <div class="command-name">/conviteinfo</div>
-                <p>Mostra informações sobre um convite de servidor</p>
+            <div class="category-content" id="integracao">
+                <div class="command-grid">
+                    <div class="command-card">
+                        <div class="command-name">/addemoji</div>
+                        <p>Adiciona um novo emoji usando uma imagem (URL ou upload)</p>
+                    </div>
+                    <div class="command-card">
+                        <div class="command-name">/steal</div>
+                        <p>Importa emojis de outros servidores (requer permissões)</p>
+                    </div>
+                    <div class="command-card">
+                        <div class="command-name">/roleadd</div>
+                        <p>Adiciona um cargo específico a um membro</p>
+                    </div>
+                    <div class="command-card">
+                        <div class="command-name">/roleremove</div>
+                        <p>Remove um cargo específico de um membro</p>
+                    </div>
+                </div>
             </div>
-            <div class="command-card">
-                <div class="command-name">/destrancar</div>
-                <p>Destrava um canal trancado</p>
+        </div>
+
+        <!-- Categoria Diversão -->
+        <div class="category">
+            <div class="category-header" onclick="toggleCategory('diversao')">
+                <span>Diversão</span>
+                <i class="fas fa-chevron-down"></i>
             </div>
-            <div class="command-card">
-                <div class="command-name">/help</div>
-                <p>Mostra todos os comandos disponíveis</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/painel</div>
-                <p>Exibe o painel de controle do servidor</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/petpet</div>
-                <p>Cria uma animação de petpet a partir de um avatar</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/ping</div>
-                <p>Mostra a latência do bot e status da API</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/roleadd</div>
-                <p>Adiciona um cargo específico a um membro</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/roleremove</div>
-                <p>Remove um cargo específico de um membro</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/serverinfo</div>
-                <p>Exibe estatísticas detalhadas do servidor</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/ship</div>
-                <p>Combina dois usuários em um 'shipp' divertido</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/steal</div>
-                <p>Importa emojis de outros servidores (requer permissões)</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/topconvites</div>
-                <p>Ranking dos melhores criadores de convites</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/trancar</div>
-                <p>Tranca o canal atual para todos os membros</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/userinfo</div>
-                <p>Exibe informações detalhadas sobre um usuário</p>
+            <div class="category-content" id="diversao">
+                <div class="command-grid">
+                    <div class="command-card">
+                        <div class="command-name">/biden</div>
+                        <p>Gera um meme personalizado com o Joe Biden</p>
+                    </div>
+                    <div class="command-card">
+                        <div class="command-name">/petpet</div>
+                        <p>Cria uma animação de petpet a partir de um avatar</p>
+                    </div>
+                    <div class="command-card">
+                        <div class="command-name">/ship</div>
+                        <p>Combina dois usuários em um 'shipp' divertido</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        function toggleCategory(id) {
+            const content = document.getElementById(id);
+            const icon = content.previousElementSibling.querySelector('i');
+            content.classList.toggle('show');
+            icon.style.transform = content.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+        }
+    </script>
 </body>
 </html>
