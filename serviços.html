@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços para Discord - POZEz BOT</title>
+    <style>
+        /* Estilos consistentes com o index.html */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            min-height: 100vh;
+        }
+
+        nav {
+            padding: 1rem 5%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #6c5ce7;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(108, 92, 231, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .terms-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 5%;
+            line-height: 1.6;
+        }
+
+        .terms-section {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 2rem 0;
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            color: #6c5ce7;
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 1rem;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .service-card {
+            background: #00000053;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-left: 5px solid #6c5ce7;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            color: #6c5ce7;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .price-tag {
+            background: #00cc88;
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .badge {
+            background: rgba(0, 0, 0, 0.2);
+            color: #6c5ce7;
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-left: 1rem;
+        }
+
+        .observations {
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .service-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">POZEz BOT</div>
+        <div class="nav-links">
+            <a href="index.html">Início</a>
+            <a href="comandos.html">Comandos</a>
+            <a href="termos.html">Termos</a>
+            <a href="https://link.mercadopago.com.br/pozezbot">Doação</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1> Meus serviços</h1>
+
+        <div class="service-card">
+            <h2>1. Análise Gratuita + Diagnóstico <span class="badge">POPULAR</span></h2>
+            <p>🔍 Avaliação completa do servidor com relatório detalhado de melhorias</p>
+            <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                <li>Identificação de pontos de melhoria</li>
+                <li>Sugestões personalizadas</li>
+                <li>Orientações para ajustes</li>
+            </ul>
+            <div class="price-tag">GRÁTIS</div>
+        </div>
+
+        <div class="service-card">
+            <h2>2. Consultoria Personalizada</h2>
+            <p>🎯 Plano de ação passo a passo + suporte 7 dias</p>
+            <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                <li>Configuração de cargos e permissões</li>
+                <li>Orientações de integração</li>
+                <li>Fluxo de comunicação otimizado</li>
+            </ul>
+            <div class="price-tag">R$ 10–30</div>
+        </div>
+
+        <div class="service-card">
+            <h2>3. Configuração Completa <span class="badge">MAIS VENDIDO</span></h2>
+            <p>🚀 Servidor pronto para uso imediato</p>
+            <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                <li>Criação/otimização completa</li>
+                <li>Instalação de bots básicos</li>
+                <li>Layout profissional</li>
+            </ul>
+            <div class="price-tag">R$ 30–80</div>
+        </div>
+
+        <div class="service-card">
+            <h2>4. Administração Temporária</h2>
+            <p>⏱️ Gestão profissional do servidor</p>
+            <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                <li>Moderação ativa</li>
+                <li>Relatórios semanais</li>
+                <li>Suporte aos membros</li>
+            </ul>
+            <div class="price-tag">R$ 15–40/semana</div>
+        </div>
+
+        <div class="service-card">
+            <h2>5. Bots Personalizados <span class="badge">PREMIUM</span></h2>
+            <p>🤖 Desenvolvimento sob medida</p>
+            <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                <li>Automações</li>
+                <li>Sistemas</li>
+                <li>Integrações</li>
+            </ul>
+            <div class="price-tag" style="background: #ff6b6b;">R$ 50–400+</div>
+        </div>
+
+        <div class="observations">
+            <h3>✉️ Observações:</h3>
+            <ul style="margin-top: 1rem;">
+                <li>Valores podem variar conforme complexidade</li>
+                <li>Pagamento via PIX</li>
+                <li>Revisão garantida por 3 dias</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
