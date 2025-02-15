@@ -1,172 +1,197 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POZEz BOT - Seu Parceiro no Discord</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Estilos mantidos do design original */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POZEz BOT - Seu Parceiro no Discord</title>
+  <!-- Link atualizado para a versão 6.4.0 do FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Reset e fontes */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
 
-        body {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: white;
-            min-height: 100vh;
-        }
+    body {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: white;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
 
-        nav {
-            padding: 1rem 5%;
-            background: rgba(0, 0, 0, 0.3);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(10px);
-        }
+    /* Navbar */
+    nav {
+      padding: 1rem 5%;
+      background: rgba(0, 0, 0, 0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(10px);
+    }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #6c5ce7;
-        }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #6c5ce7;
+    }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
 
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-        }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+    }
 
-        .nav-links a:hover {
-            background: rgba(108, 92, 231, 0.2);
-            transform: translateY(-2px);
-        }
+    .nav-links a:hover {
+      background: rgba(108, 92, 231, 0.2);
+      transform: translateY(-2px);
+    }
 
-        .hero {
-            text-align: center;
-            padding: 8rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    /* Seção Hero */
+    .hero {
+      text-align: center;
+      padding: 8rem 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: #a8a8a8;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
+    .hero p {
+      font-size: 1.2rem;
+      color: #a8a8a8;
+      margin-bottom: 2rem;
+    }
 
-        .cta-button {
-            background: #6c5ce7;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s;
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
-        }
+    .cta-button {
+      background: #6c5ce7;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s;
+      display: inline-block;
+      box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3);
+    }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4);
-        }
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4);
+    }
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            padding: 4rem 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    /* Seção de Features */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      padding: 4rem 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-        .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(108, 92, 231, 0.1);
-        }
+    .feature-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid rgba(108, 92, 231, 0.1);
+    }
 
-        .feature-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-        }
+    .feature-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
 
-        .feature-icon {
-            font-size: 2.5rem;
-            color: #6c5ce7;
-            margin-bottom: 1rem;
-            filter: drop-shadow(0 4px 6px rgba(108, 92, 231, 0.3));
-        }
+    .feature-icon {
+      font-size: 2.5rem;
+      color: #6c5ce7;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 4px 6px rgba(108, 92, 231, 0.3));
+    }
 
-        @media (max-width: 768px) {
-            .features {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-        }
-    </style>
+    /* Responsividade */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+        /* Mantém os itens em linha */
+        flex-wrap: nowrap;
+      }
+
+      .hero {
+        padding: 4rem 5%;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <div class="logo">POZEz BOT</div>
-        <div class="nav-links">
-            <a href="comandos.html">Comandos</a>
-            <a href="termos.html">Termos</a>
-            <a href="serviços.html">Serviços</a>
-            <a href="https://link.mercadopago.com.br/pozezbot">Doação</a>
-        </div>
-    </nav>
+  <nav>
+    <div class="logo">POZEz BOT</div>
+    <div class="nav-links">
+      <a href="comandos.html">Comandos</a>
+      <a href="termos.html">Termos</a>
+      <a href="serviços.html">Serviços</a>
+      <a href="https://link.mercadopago.com.br/pozezbot">Doação</a>
+    </div>
+  </nav>
 
-    <section class="hero">
-        <h1>POZEz BOT - Seu parceiro no Discord!</h1>
-        <p>Sou o POZEz BOT, pronto para transformar seu servidor em um espaço dinâmico e organizado.<br>
-        Ofereço moderação automática, comandos e interações,<br> 
-        tudo com personalização avançada e gestão eficiente.</p>
-        <a href="https://discord.com/oauth2/authorize?client_id=1050964485776605214" class="cta-button">Adicionar ao Discord</a>
-    </section>
+  <section class="hero">
+    <h1>POZEz BOT - Seu parceiro no Discord!</h1>
+    <p>
+      Sou o POZEz BOT, pronto para transformar seu servidor em um espaço dinâmico e organizado.<br>
+      Ofereço moderação automática, comandos e interações,<br>
+      tudo com personalização avançada e gestão eficiente.
+    </p>
+    <a href="https://discord.com/oauth2/authorize?client_id=1050964485776605214" class="cta-button">Adicionar ao Discord</a>
+  </section>
 
-    <section class="features">
-        <div class="feature-card">
-            <i class="fas fa-shield-alt feature-icon"></i>
-            <h3>Moderação</h3>
-            <p>Sistema  de  gestão do servidor</p>
-        </div>
-        <div class="feature-card">
-            <i class="fas fa-gamepad feature-icon"></i>
-            <h3>Integrações</h3>
-            <p>Sistema que puxa dados de sua conta em jogos.</p>
-        </div>
-        <div class="feature-card">
-            <i class="fas fa-cogs feature-icon"></i>
-            <h3>Personalização Total</h3>
-            <p>Configure cada detalhe do bot</p>
-        </div>
-    </section>
+  <section class="features">
+    <div class="feature-card">
+      <i class="fas fa-shield-alt feature-icon"></i>
+      <h3>Moderação</h3>
+      <p>Sistema de gestão do servidor</p>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-gamepad feature-icon"></i>
+      <h3>Integrações</h3>
+      <p>Sistema que puxa dados de sua conta em jogos.</p>
+    </div>
+    <div class="feature-card">
+      <i class="fas fa-cogs feature-icon"></i>
+      <h3>Personalização Total</h3>
+      <p>Configure cada detalhe do bot</p>
+    </div>
+  </section>
 </body>
 </html>
