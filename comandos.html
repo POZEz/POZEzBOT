@@ -1,189 +1,351 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Comandos - POZEz BOT</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Estilos consistentes com o index.html */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
+  <meta charset="UTF-8">
+  <title>Comandos POZEz BOT</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
 
-        body {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: white;
-            min-height: 100vh;
-        }
+    body {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: white;
+      min-height: 100vh;
+    }
 
-        nav {
-            padding: 1rem 5%;
-            background: rgba(0, 0, 0, 0.3);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(10px);
-        }
+    /* Barra de Navegação Superior */
+    .top-nav {
+      padding: 1rem 5%;
+      background: rgba(0, 0, 0, 0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #6c5ce7;
-        }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #6c5ce7;
+    }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
 
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-        }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+    }
 
-        .nav-links a:hover {
-            background: rgba(108, 92, 231, 0.2);
-            transform: translateY(-2px);
-        }
+    .nav-links a:hover {
+      background: rgba(108, 92, 231, 0.2);
+    }
 
-        .commands-container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 5%;
-        }
+    /* Menu Lateral */
+    .sidebar {
+      width: 80px;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      left: 0;
+      top: 60px;
+      transition: all 0.3s;
+      overflow: hidden;
+    }
 
-        .command-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            padding: 2rem 0;
-        }
+    .sidebar.expanded {
+      width: 250px;
+    }
 
-        .command-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 1.5rem;
-            border-radius: 15px;
-            border-left: 4px solid #6c5ce7;
-            transition: all 0.3s;
-        }
+    .menu-toggle {
+      padding: 1rem;
+      cursor: pointer;
+      color: #6c5ce7;
+      text-align: center;
+      border-bottom: 1px solid rgba(108, 92, 231, 0.2);
+    }
 
-        .command-card:hover {
-            transform: translateY(-5px);
-        }
+    .nav-icons {
+      padding: 1rem 0;
+    }
 
-        .command-name {
-            color: #6c5ce7;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      color: #6c5ce7;
+    }
 
-        h1 {
-            text-align: center;
-            margin: 2rem 0;
-            font-size: 2.5rem;
-        }
+    .nav-item:hover,
+    .nav-item.active {
+      background: rgba(108, 92, 231, 0.2);
+    }
 
-        @media (max-width: 768px) {
-            .command-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    .nav-item i {
+      font-size: 1.5rem;
+      min-width: 50px;
+      text-align: center;
+    }
+
+    /* Conteúdo Principal */
+    .main-content {
+      margin-left: 80px;
+      margin-top: 60px;
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+
+    .sidebar.expanded + .main-content {
+      margin-left: 250px;
+    }
+
+    /* Categorias de Comandos */
+    .command-category {
+      display: none;
+      animation: fadeIn 0.3s ease;
+      margin-bottom: 2rem;
+    }
+
+    .command-category.active {
+      display: block;
+    }
+
+    .command-category h1 {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 0.5rem;
+    }
+
+    .command-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .command-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1.5rem;
+      border-radius: 15px;
+      border-left: 4px solid #6c5ce7;
+      transition: all 0.3s;
+    }
+
+    .command-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .command-name {
+      color: #6c5ce7;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 60px;
+        top: 50px;
+      }
+      
+      .sidebar.expanded {
+        width: 200px;
+      }
+      
+      .main-content {
+        margin-left: 60px;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <div class="logo">POZEz BOT</div>
-        <div class="nav-links">
-            <a href="index.html">Início</a>
-            <a href="termos.html">Termos</a>
-            <a href="serviços.html">Serviços</a>
-            <a href="https://link.mercadopago.com.br/pozezbot">Doação</a>
-        </div>
-    </nav>
-
-    <div class="commands-container">
-        <h1>Comandos do POZEz BOT</h1>
-        <div class="command-grid">
-            <div class="command-card">
-                <div class="command-name">/addemoji</div>
-                <p>Adiciona um novo emoji usando uma imagem (URL ou upload)</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/ban</div>
-                <p>Banir permanentemente um membro do servidor</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/biden</div>
-                <p>Gera um meme personalizado com o Joe Biden</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/clear</div>
-                <p>Limpa mensagens (1-100) no canal atual</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/conviteinfo</div>
-                <p>Mostra informações sobre um convite de servidor</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/destrancar</div>
-                <p>Destrava um canal trancado</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/help</div>
-                <p>Mostra todos os comandos disponíveis</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/painel</div>
-                <p>Exibe o painel de controle do servidor</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/petpet</div>
-                <p>Cria uma animação de petpet a partir de um avatar</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/ping</div>
-                <p>Mostra a latência do bot e status da API</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/roleadd</div>
-                <p>Adiciona um cargo específico a um membro</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/roleremove</div>
-                <p>Remove um cargo específico de um membro</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/serverinfo</div>
-                <p>Exibe estatísticas detalhadas do servidor</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/ship</div>
-                <p>Combina dois usuários em um 'shipp' divertido</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/steal</div>
-                <p>Importa emojis de outros servidores (requer permissões)</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/topconvites</div>
-                <p>Ranking dos melhores criadores de convites</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/trancar</div>
-                <p>Tranca o canal atual para todos os membros</p>
-            </div>
-            <div class="command-card">
-                <div class="command-name">/userinfo</div>
-                <p>Exibe informações detalhadas sobre um usuário</p>
-            </div>
-        </div>
+  <!-- Barra Superior -->
+  <nav class="top-nav">
+    <div class="logo">POZEz BOT</div>
+    <div class="nav-links">
+      <a href="index.html">Início</a>
+      <a href="termos.html">Termos</a>
+      <a href="serviços.html">Serviços</a>
+      <a href="https://link.mercadopago.com.br/pozezbot">Doação</a>
     </div>
+  </nav>
+
+  <!-- Menu Lateral -->
+  <div class="sidebar">
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+    <div class="nav-icons">
+      <div class="nav-item active" data-category="featured">
+        <i class="fas fa-star"></i>
+        <span class="nav-text">Destaques</span>
+      </div>
+      <div class="nav-item" data-category="administration">
+        <i class="fas fa-shield-alt"></i>
+        <span class="nav-text">Administração</span>
+      </div>
+      <div class="nav-item" data-category="integration">
+        <i class="fas fa-link"></i>
+        <span class="nav-text">Integração</span>
+      </div>
+      <div class="nav-item" data-category="fun">
+        <i class="fas fa-gamepad"></i>
+        <span class="nav-text">Diversão</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conteúdo Principal -->
+  <div class="main-content">
+    <!-- Categoria Destaques -->
+    <div id="featured" class="command-category active">
+      <h1>Destaques</h1>
+      <div class="command-grid">
+        <div class="command-card">
+          <div class="command-name">/ping</div>
+          <p>Mostra a latência do bot e status da API</p>
+        </div>
+        <div class="command-card">
+          <div class="command-name">/help</div>
+          <p>Mostra todos os comandos disponíveis</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Categoria Administração -->
+    <div id="administration" class="command-category">
+      <h1>Administração</h1>
+      <div class="command-grid">
+        <div class="command-card">
+          <div class="command-name">/ban</div>
+          <p>Banir permanentemente um membro do servidor</p>
+        </div>
+        <div class="command-card">
+          <div class="command-name">/clear</div>
+          <p>Limpa mensagens (1-100) no canal atual</p>
+        </div>
+        <div class="command-card">
+          <div class="command-name">/destrancar</div>
+          <p>Destrava um canal trancado</p>
+        </div>
+        <div class="command-card">
+          <div class="command-name">/painel</div>
+          <p>Exibe o painel de controle do servidor</p>
+        </div>
+        <div class="command-card">
+          <div class="command-name">/roleadd</div>
+          <p>Adiciona um cargo específico a um membro</p>
+        </div>
+        <div class="command-card">
+          <div class="command-name">/roleremove</div>
+          <p>Remove um cargo específico de um membro</p>
+        </div>
+        <div class="command-card">
+          <div class="command-name">/serverinfo</div>
+          <p>Exibe estatísticas detalhadas do servidor</p>
+        </div>
+        <div class="command-card">
+          <div class="command-name">/trancar</div>
+          <p>Tranca o canal atual para todos os membros</p>
+        </div>
+        <div class="command-card">
+          <div class="command-name">/userinfo</div>
+          <p>Exibe informações detalhadas sobre um usuário</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Categoria Integração -->
+    <div id="integration" class="command-category">
+      <h1>Integração</h1>
+      <div class="command-grid">
+        <div class="command-card">
+          <div class="command-name">/addemoji</div>
+          <p>Adiciona um novo emoji usando uma imagem (URL ou upload)</p>
+        </div>
+        <div class="command-card">
+          <div class="command-name">/conviteinfo</div>
+          <p>Mostra informações sobre um convite de servidor</p>
+        </div>
+        <div class="command-card">
+          <div class="command-name">/steal</div>
+          <p>Importa emojis de outros servidores (requer permissões)</p>
+        </div>
+        <div class="command-card">
+          <div class="command-name">/topconvites</div>
+          <p>Ranking dos melhores criadores de convites</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Categoria Diversão -->
+    <div id="fun" class="command-category">
+      <h1>Diversão</h1>
+      <div class="command-grid">
+        <div class="command-card">
+          <div class="command-name">/biden</div>
+          <p>Gera um meme personalizado com o Joe Biden</p>
+        </div>
+        <div class="command-card">
+          <div class="command-name">/petpet</div>
+          <p>Cria uma animação de petpet a partir de um avatar</p>
+        </div>
+        <div class="command-card">
+          <div class="command-name">/ship</div>
+          <p>Combina dois usuários em um 'shipp' divertido</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Toggle do Menu Lateral
+    function toggleMenu() {
+      document.querySelector('.sidebar').classList.toggle('expanded');
+    }
+
+    // Troca de Categorias
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.addEventListener('click', function() {
+        // Remove classe active de todos os itens e categorias
+        document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+        document.querySelectorAll('.command-category').forEach(cat => cat.classList.remove('active'));
+        
+        // Adiciona classe active no item clicado e na categoria correspondente
+        this.classList.add('active');
+        const category = this.dataset.category;
+        document.getElementById(category).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
